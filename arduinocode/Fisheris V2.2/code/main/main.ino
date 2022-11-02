@@ -229,6 +229,7 @@ void setupLCD(){
   Serial.println(F(""));
   Serial.println(F("-SET UP LCD-"));
   lcd.begin();
+  Wire.setClock(10000);
   lcd.backlight();
   clearLCD();
   Serial.println(F("Setup Complete"));
@@ -242,7 +243,7 @@ void setupLightMeter(){
   Serial.println(F("-SET UP  LIGHTMETER-"));
   writeLCD("-SET UP  LIGHTMETER-",1,0);
   lightMeter.begin();
-  
+  Wire.setClock(10000);
   Serial.println("Waiting Sensor To Get Value.......");
   writeLCD("Getting Value...",2,2);
   delay(1000);
@@ -728,6 +729,7 @@ void setup()
   // postReq(serilizeJson());
   curretTime=millis();
   pastSentTime=millis();
+  
 }
 
 void loop()
