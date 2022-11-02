@@ -11,7 +11,7 @@
 
 // DEVICE ID AND VERSION
 const String deviceId="FD001";
-const String deviceVer="FHISERIS V2.2";
+const String deviceVer="FISHERIS V2.2";
 
 //PINS HX711
 #define DOUT  A1
@@ -40,11 +40,11 @@ HX711 scale(DOUT, CLK);
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
-float calibration_factor = 31.41; //HX711 CALIBRATION FACTOR
+float calibration_factor = 21.11; //HX711 CALIBRATION FACTOR
 
 //URL HTTP
 const String postTargetUrl="https://risetndev.com/api/logdata/store";
-const String postBypassUrl="http://fishdryer.stiki-indonesia.ac.id/api/bypasstls";
+const String postBypassUrl="http://risetdev.familytransbali.com/bypasstls";
 
 //custom char
 const byte tempIcon[] = {
@@ -109,7 +109,7 @@ const String longitude="180.000000";
 // Sending Timer
 unsigned long curretTime;
 unsigned long pastSentTime;
-const int sendDelay =3000;
+const int sendDelay = 30000; 
 
 void writeLCD(String msg,int row=0,int collum=0){
   lcd.setCursor(collum,row);//collum,row
@@ -353,7 +353,7 @@ String serilizeJson(String deviceId=deviceId,float weight=weight,float temp=temp
   StaticJsonDocument<200> doc;
 
   doc["url"] = postTargetUrl;
-  JsonObject dump_data = doc["dump"].createNestedObject("data");
+  JsonObject dump_data = doc["dumps"].createNestedObject("data");
   dump_data["device"] = deviceId;
   dump_data["weight"] = weight;
   dump_data["temp"] = temp;

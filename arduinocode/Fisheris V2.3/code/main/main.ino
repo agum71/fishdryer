@@ -7,7 +7,7 @@
 #include <ArduinoJson.h>
 
 #include <SoftwareSerial.h>
-SoftwareSerial SIM808(10,11);//TX,RX
+SoftwareSerial SIM808(11,10);//TX,RX
 
 //INCREASE BUFFER
 // #define _SS_MAX_RX_BUFF 256
@@ -47,7 +47,7 @@ float calibration_factor = 31.41; //HX711 CALIBRATION FACTOR
 
 //URL HTTP
 const String postTargetUrl="https://risetndev.com/api/logdata/store";
-const String postBypassUrl="http://fishdryer.stiki-indonesia.ac.id/api/bypasstls";
+const String postBypassUrl="http://risetdev.familytransbali.com/bypasstls";
 
 //custom char
 const byte tempIcon[] = {
@@ -120,7 +120,7 @@ location cordinate{
 // Sending Timer
 unsigned long curretTime;
 unsigned long pastSentTime;
-const int sendDelay =3000;
+const int sendDelay = 30000;
 
 void writeLCD(String msg,int row=0,int collum=0){
   lcd.setCursor(collum,row);//collum,row
